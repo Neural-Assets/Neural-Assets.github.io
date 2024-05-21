@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Neural Assets" />
+        <meta name="author" content="anonymous" />
+
+        <title>Neural Assets</title>
+        <!-- Bootstrap core CSS -->
+        <!--link href="bootstrap.min.css" rel="stylesheet"-->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+
+        <!-- Custom styles for this template -->
+        <link href="offcanvas.css" rel="stylesheet" />
+        <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+        <style type="text/css">
+            .container {
+                zoom: 1;
+                margin-left: auto;
+                margin-right: auto;
+                vertical-align: middle;
+                width: 100%;
+                max-width: 900px;
+                font-size: 18px;
+            }
+            .container_img {
+                zoom: 1;
+                margin-left: auto;
+                margin-right: auto;
+                vertical-align: middle;
+                width: 100%;
+                max-width: 1000px;
+            }
+            img {
+                height: 200px;
+            }
+        </style>
+
+        <!-- MathJax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+              }
+            });
+        </script>
+
+        <script
+            type="text/javascript"
+            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+        ></script>
+    </head>
+
+    <body>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container" align="center">
+                <h2>
+                    Neural Assets: 3D-aware Multi-Object <br />
+                    Scene Synthesis with Image Diffusion Models
+                </h2>
+                <h4><i>NeurIPS 2024 Submission</i></h4>
+                <p>
+                    Anonymous Author(s)
+                </p>
+            </div>
+        </div>
+
+        <!--------------------- Abstract --------------------->
+        <!-- <br />
+        <div class="container">
+            <div align="center"><h2>Abstract</h2></div>
+            <hr />
+            <p>
+                We address the problem of multi-object 3D pose control in image
+                diffusion models. Instead of conditioning on a sequence of text tokens,
+                we propose to use a set of per-object representations, “Neural Assets”,
+                to control the 3D pose of individual objects in a scene. Neural Assets
+                are obtained by pooling visual representations of objects from a
+                reference image, such as a frame in a video, and are trained to reconstruct
+                the respective objects in a different image, e.g., a later frame in the
+                video. Importantly, we encode object visuals from the reference image
+                while conditioning on object poses from the target frame, which enables
+                learning disentangled appearance and position features. Combining visual
+                and 3D pose representations in a sequence-of-tokens format allows us to
+                keep the text-to-image interface of existing models, with Neural Assets
+                in place of text tokens. By fine-tuning a pre-trained text-to-image diffusion
+                model with this information, our approach enables fine-grained 3D pose
+                and placement control of individual objects in a scene. We further
+                demonstrate that Neural Assets can be transferred and recomposed across
+                different scenes. Our model achieves state-of-the-art results on both
+                synthetic 3D scene datasets, as well as two real-world video datasets
+                (Objectron, Waymo Open).
+            </p>
+            <br />
+        </div> -->
+
+        <!--------------------- Qualitative Results --------------------->
+        <br />
+        <div class="container">
+            <div align="center"><h2>Qualitative Results</h2></div>
+            <hr />
+            <p>
+                Here, we show multi-object control results on Waymo Open and
+                Objectron datasets. We can easily translate, rotate, and rescale
+                objects by manipulating their 3D bounding boxes. Notice how the
+                model handles occlusions with in-/out-painting and render shadows under
+                new scene configurations.
+            </p>
+            <br />
+        </div>
+
+        <!--------------------- Waymo --------------------->
+        <div class="container_img">
+            <div align="center">
+                <h3>Waymo Open</h3>
+            </div>
+            <hr />
+            <table style="width: 100%; text-align: center; font-size:125%">
+                <tr>
+                    <th style="width: 20%">Source Image</th>
+                    <th style="width: 20%">Reconstruction</th>
+                    <th style="width: 20%">Translate</th>
+                    <th style="width: 20%">Rotate</th>
+                    <th style="width: 20%">Rescale</th>
+                </tr>
+                <tr>
+                    <td><img src="assets/Waymo/waymo-ori-1.png"/></td>
+                    <td><img src="assets/Waymo/waymo-recon-1.png"/></td>
+                    <td><img src="assets/Waymo/waymo-translate-1.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rotate-1.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rescale-1.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Waymo/waymo-ori-2.png"/></td>
+                    <td><img src="assets/Waymo/waymo-recon-2.png"/></td>
+                    <td><img src="assets/Waymo/waymo-translate-2.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rotate-2.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rescale-2.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Waymo/waymo-ori-3.png"/></td>
+                    <td><img src="assets/Waymo/waymo-recon-3.png"/></td>
+                    <td><img src="assets/Waymo/waymo-translate-3.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rotate-3.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rescale-3.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Waymo/waymo-ori-4.png"/></td>
+                    <td><img src="assets/Waymo/waymo-recon-4.png"/></td>
+                    <td><img src="assets/Waymo/waymo-translate-4.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rotate-4.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rescale-4.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Waymo/waymo-ori-5.png"/></td>
+                    <td><img src="assets/Waymo/waymo-recon-5.png"/></td>
+                    <td><img src="assets/Waymo/waymo-translate-5.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rotate-5.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rescale-5.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Waymo/waymo-ori-6.png"/></td>
+                    <td><img src="assets/Waymo/waymo-recon-6.png"/></td>
+                    <td><img src="assets/Waymo/waymo-translate-6.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rotate-6.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rescale-6.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Waymo/waymo-ori-7.png"/></td>
+                    <td><img src="assets/Waymo/waymo-recon-7.png"/></td>
+                    <td><img src="assets/Waymo/waymo-translate-7.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rotate-7.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rescale-7.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Waymo/waymo-ori-8.png"/></td>
+                    <td><img src="assets/Waymo/waymo-recon-8.png"/></td>
+                    <td><img src="assets/Waymo/waymo-translate-8.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rotate-8.gif"/></td>
+                    <td><img src="assets/Waymo/waymo-rescale-8.gif"/></td>
+                </tr>
+            </table>
+            <br />
+            <br />
+        </div>
+
+        <!--------------------- Objectron --------------------->
+        <div class="container">
+            <div align="center">
+                <h3>Objectron</h3>
+            </div>
+            <hr />
+            <p>
+                Since Objectron videos only have camera movement (i.e., the objects
+                remain static), the pose of foreground objects is sometimes entangled
+                with global camera pose, as can be seen in the translation results.
+                Nevertheless, in the rotation results, our model is still able to
+                synthesize disentangled object movement.
+            </p>
+            <hr />
+        </div>
+        <div class="container_img">
+            <table style="width: 100%; text-align: center; font-size:125%">
+                <tr>
+                    <th style="width: 20%">Source Image</th>
+                    <th style="width: 20%">Reconstruction</th>
+                    <th style="width: 20%">Translate</th>
+                    <th style="width: 20%">Rotate</th>
+                    <th style="width: 20%">Rescale</th>
+                </tr>
+                <tr>
+                    <td><img src="assets/Objectron/objectron-ori-1.png"/></td>
+                    <td><img src="assets/Objectron/objectron-recon-1.png"/></td>
+                    <td><img src="assets/Objectron/objectron-translate-1.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rotate-1.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rescale-1.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Objectron/objectron-ori-2.png"/></td>
+                    <td><img src="assets/Objectron/objectron-recon-2.png"/></td>
+                    <td><img src="assets/Objectron/objectron-translate-2.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rotate-2.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rescale-2.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Objectron/objectron-ori-3.png"/></td>
+                    <td><img src="assets/Objectron/objectron-recon-3.png"/></td>
+                    <td><img src="assets/Objectron/objectron-translate-3.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rotate-3.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rescale-3.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Objectron/objectron-ori-4.png"/></td>
+                    <td><img src="assets/Objectron/objectron-recon-4.png"/></td>
+                    <td><img src="assets/Objectron/objectron-translate-4.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rotate-4.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rescale-4.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Objectron/objectron-ori-5.png"/></td>
+                    <td><img src="assets/Objectron/objectron-recon-5.png"/></td>
+                    <td><img src="assets/Objectron/objectron-translate-5.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rotate-5.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rescale-5.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Objectron/objectron-ori-6.png"/></td>
+                    <td><img src="assets/Objectron/objectron-recon-6.png"/></td>
+                    <td><img src="assets/Objectron/objectron-translate-6.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rotate-6.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rescale-6.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Objectron/objectron-ori-7.png"/></td>
+                    <td><img src="assets/Objectron/objectron-recon-7.png"/></td>
+                    <td><img src="assets/Objectron/objectron-translate-7.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rotate-7.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rescale-7.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Objectron/objectron-ori-8.png"/></td>
+                    <td><img src="assets/Objectron/objectron-recon-8.png"/></td>
+                    <td><img src="assets/Objectron/objectron-translate-8.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rotate-8.gif"/></td>
+                    <td><img src="assets/Objectron/objectron-rescale-8.gif"/></td>
+                </tr>
+            </table>
+            <br />
+            <br />
+        </div>
+
+        <!--------------------- Failure Case --------------------->
+        <div class="container">
+            <div align="center">
+                <h3>Failure Case</h3>
+            </div>
+            <hr />
+            <p>
+                One main failure case of our model is symmetry ambiguity.
+                As can be seen from the following rotation results, the handle of the
+                cup gets flipped when it rotates 180 degree.
+            </p>
+            <hr />
+            <table style="width: 50%; text-align: center; font-size:125%">
+                <tr>
+                    <th style="width: 50%">Source Image</th>
+                    <th style="width: 50%">Rotate</th>
+                </tr>
+                <tr>
+                    <td><img src="assets/Objectron/objectron-fail-ori-1.png"/></td>
+                    <td><img src="assets/Objectron/objectron-fail-rot-1.gif"/></td>
+                </tr>
+                <tr>
+                    <td><img src="assets/Objectron/objectron-fail-ori-2.png"/></td>
+                    <td><img src="assets/Objectron/objectron-fail-rot-2.gif"/></td>
+                </tr>
+            </table>
+            <br />
+            <br />
+        </div>
+
+        <!--------------------- References --------------------->
+        <br /><br />
+        <div class="container">
+            <div align="center"><h2>References</h2></div>
+            <hr />
+            <p>
+                [1] Sun, Pei, et al. "Scalability in perception for
+                autonomous driving: Waymo open dataset." CVPR. 2020.
+                <br />
+                [2] Ahmadyan, Adel, et al. "Objectron: A large scale dataset of
+                object-centric videos in the wild with pose annotations." CVPR. 2021.
+            </p>
+        </div>
+
+        <br /><br /><br />
+    </body>
+</html>
