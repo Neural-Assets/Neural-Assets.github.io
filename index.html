@@ -75,7 +75,7 @@
         </div>
 
         <!--------------------- Abstract --------------------->
-        <!-- <br />
+        <br />
         <div class="container">
             <div align="center"><h2>Abstract</h2></div>
             <hr />
@@ -96,12 +96,37 @@
                 model with this information, our approach enables fine-grained 3D pose
                 and placement control of individual objects in a scene. We further
                 demonstrate that Neural Assets can be transferred and recomposed across
-                different scenes. Our model achieves state-of-the-art results on both
-                synthetic 3D scene datasets, as well as two real-world video datasets
-                (Objectron, Waymo Open).
+                different scenes. Our model achieves state-of-the-art multi-object editing
+                results on both synthetic 3D scene datasets, as well as two real-world
+                video datasets (Objectron, Waymo Open).
             </p>
             <br />
-        </div> -->
+        </div>
+
+        <!--------------------- Method --------------------->
+        <br />
+        <div class="container">
+            <div align="center"><h2>Method</h2></div>
+            <hr />
+        </div>
+        <div class="container_img">
+            <p align="center">
+                <img src="assets/method_pipeline.png" style="height: 260px"/>
+            </p>
+        </div>
+        <div class="container">
+            <p>
+                <!-- <strong>Neural Assets framework</strong>. -->
+                <strong>(a)</strong> A Neural Asset is an object-centric representation
+                that consists of an appearance token and a pose token.
+                <strong>(b)</strong> To learn disentangled features, we encode appearance
+                from a source image and pose from a target image, and train the model to
+                reconstruct the target image.
+                <strong>(c)</strong> At testing time, we support 3D-aware editing such as
+                rotation (<b style="color: #17BECF">blue</b>), and compositional generation
+                by transferring objects across scenes (<b style="color: #E377C2">pink</b>).
+            </p>
+        </div>
 
         <!--------------------- Qualitative Results --------------------->
         <br />
